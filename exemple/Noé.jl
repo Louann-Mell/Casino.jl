@@ -1,14 +1,18 @@
 using Casino
+using Plots
 
-#Noé = Joueur_Yams("Noé", 100.0, 0)
+Noé = Joueur_Yams("Noé", 1000.0, 0)
 
-println("Solde initial : ", Noé.solde)
+# Simulation de 100 parties
+historique = simule_Yams(Noé, 100, 10.0)
 
-partie = jouer_yams(Noé, 10.0)
-
-println("Dés : ", partie.des)
-println("Combinaison : ", partie.combinaison)
-println("Gain : ", partie.gain)
-
-println("Solde final : ", Noé.solde)
-println("Nombre de parties : ", Noé.nb_parties)
+# Graphique de l'évolution du solde sur 100 parties
+plot(
+    0:(length(historique)-1),
+    historique,
+    xlabel = "Nombre de parties",
+    ylabel = "Solde",
+    title = "Évolution du solde au Yams",
+    label = "Solde du joueur",
+    linewidth = 2
+)

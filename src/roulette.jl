@@ -1,11 +1,22 @@
-mutable struct Joueur
+struct RouletteGame <: AbstractGame
+end
+
+mutable struct RouletteGamer <: AbstractGamer
     capital::Float64
 end
 
-function lancer_roulette()
-    numero = rand(0:36)
-    return numero
+struct Pari
+    type_pari::String
+    mise::Float64
 end
+
+function bet!(roulette::RouletteGame, joueur::RouletteGamer, pari::Pari)
+    pari_gagnant(pari, rand(roulette))
+    prelever_mise(joueur, pari)
+    joueur
+end
+
+ Base.rand((roulette::RouletteGame)) = rand(0:36)
 
 rouge = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]
 
@@ -39,12 +50,8 @@ function manque_passe(numero)
     end
 end
 
-struct Pari
-    type_pari::String
-    mise::Float64
-end
 
-function verifier_pari(pari::Pari, joueur::Joueur)
+function verifier_pari(pari::Pari, joueur::RouletteGamer)
 
     types_valides = ["rouge","noir", "pair", "impair", "manque", "passe"] # gere le problemes des majuscules et minuscules
     type = lowercase(pari.type_pari)
@@ -53,7 +60,8 @@ function verifier_pari(pari::Pari, joueur::Joueur)
     elseif pari.mise <= 0
         error("La mise doit être un montant positif.")
     elseif pari.mise > joueur.capital
-        error("Vous n'avez pas assez de capital pour ce pari.")
+        println("Vous n'avez pas assez de capital pour ce pari.")
+        return false
     else
         println("Pari valide : $(pari.type_pari) avec une mise de $(pari.mise)€.")
         return true
@@ -61,10 +69,14 @@ function verifier_pari(pari::Pari, joueur::Joueur)
     
 end
 
-function prelever_mise(joueur::Joueur, pari::Pari)
+function prelever_mise(joueur::RouletteGamer, pari::Pari)
     if verifier_pari(pari, joueur)
         joueur.capital = joueur.capital - pari.mise
         println("Mise de $(pari.mise)€ prélevée. Capital restant : $(joueur.capital)€.")
+    else
+        
+        joueur.capital = 0
+        println("Tu as tout perdu!")
     end
 end
 
@@ -97,13 +109,13 @@ function calculer_gain(pari::Pari, numero::Int)
     
 end
 
-function ajouter_gain(joueur::Joueur, gain::Float64)
+function ajouter_gain(joueur::RouletteGamer, gain::Float64)
     joueur.capital = joueur.capital + gain
     return  joueur.capital
     println("Gain de $(gain)€ ajouté. Nouveau capital : $(joueur.capital)€.")
 end
 
-function jouer_roulette(joueur::Joueur, pari::Pari)
+function jouer_roulette(joueur::RouletteGamer, pari::Pari)
 
     # prelever la mise
     prelever_mise(joueur, pari)

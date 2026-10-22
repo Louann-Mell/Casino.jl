@@ -125,6 +125,9 @@ function jouer_yams(joueur::Joueur_Yams, mise::Real)
 end
 
 function simule_Yams(joueur::Joueur_Yams, nb::Int, mise::Real)
+
+    historique = Float64[joueur.solde]
+
     for n in 1:nb
 
         if joueur.solde < mise
@@ -133,5 +136,9 @@ function simule_Yams(joueur::Joueur_Yams, nb::Int, mise::Real)
         end
 
         jouer_yams(joueur, mise)
+
+        push!(historique, joueur.solde)
     end
+
+    return historique
 end

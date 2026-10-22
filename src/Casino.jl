@@ -14,12 +14,14 @@ export lancer_jusqua_yams
 export multiplicateur
 export gain
 export jouer_yams
+export simule_Yams
 
 include("yams.jl")
 
 # Roulette
-export Joueur
-export lancer_roulette
+export RouletteGamer
+export RouletteGame
+export bet!
 export rouge
 export couleur
 export parite

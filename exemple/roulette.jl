@@ -1,44 +1,24 @@
 using Casino
-using StatsBase
-
-des = lancer_des()
-
-print(des)
-
-values(countmap(des))
-
-combinaison(des)
-
-lancer_jusqua_yams()
 
 
-joueur= Joueur(200.0)
-print(joueur)
-print(joueur.capital)
+roulette = RouletteGame()
+rand(roulette)
+joueur= RouletteGamer(200.0)
 
-joueur.capital = 90.0
-print(joueur.capital)
 
-println("Le numéro gagnant est : ", lancer_roulette())
-println("La couleur du numéro gagnant est : ", couleur(lancer_roulette()))
+bet!(roulette, joueur,Pari( "pair", 70.0))
 
-numero = lancer_roulette()
-println("Numéro : ", numero)
-println("Couleur : ", couleur(numero))
-println("Parité : ", parite(numero))
-parite(numero)
-println("Catégorie : ", manque_passe(numero))
+numero =rand(roulette)
+numero, couleur(numero), parite(numero),manque_passe(numero)
 
-joueur = Joueur(70.0)
-pari = Pari("pair", 70.0)
-println("Capital du joueur : ", joueur.capital)
-println("Type de pari : ", pari.type_pari)
-println("Montant misé : ", pari.mise) 
 
-pari1 = Pari("imPAir", 50.0)
+
+
+pari1 = Pari("imPAir", 10.0)
 verifier_pari(pari1, joueur)
 
 prelever_mise(joueur, pari)
+joueur
 
 println(pari_gagnant(Pari("rouge", 10.0),lancer_roulette()))
 
@@ -53,6 +33,6 @@ gain = calculer_gain(pari, numero)
 
 
 # tester la roulette 
-joueur = Joueur(100.0)
+joueur = RouletteGamer(100.0)
 pari = Pari("ROUGE", 10.0)
 jouer_roulette(joueur, pari)
