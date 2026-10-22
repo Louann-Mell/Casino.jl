@@ -5,9 +5,17 @@ end
 
 struct CrapsGame <:AbstractGame end
 
+Base.rand((lanceur::CrapsGame))
+
 function sumdes()
 v=rand(1:6, 2)
 v=v[1]+v[2]
+end
+
+
+
+function lanceurcraps()
+b=sumdes()
 end
 
 #a prends le 1er lancer de des
@@ -24,7 +32,7 @@ else
     #jeu sur le point
     print("point = ", a)
 
-    b=sumdes()
+    b=lanceurcraps()
     while (b!=7) & (b!=a)
        b=sumdes()
         if(b==a)
@@ -47,14 +55,14 @@ if(a==7) || (a==11)
     print("perdu ")  #perds la mise
     CrapsGamer.capital=CrapsGamer.capital-CrapsGamer.mise
 elseif (a==2)|| (a==3)
-    print("gagné ")   #remise du gain
+    print("gagné ")   #gagne ce que tu as mise
     CrapsGamer.capital=CrapsGamer.capital + CrapsGamer.mise
 elseif(a==12)
     print("reprends ta mise ")
 else
    print("point = ", a)
 
-    b=sumdes()
+    b=lanceurcraps()
     while (b!=7) & (b!=a)
        b=sumdes()
         if(b==a)
@@ -96,7 +104,7 @@ else
     #jeu sur le point
     print("point = ", a)
 
-    b=sumdes()
+    b=lanceurcraps()
     while (b!=7) & (b!=a)
        b=sumdes()
         if(b==a)
@@ -127,7 +135,7 @@ elseif(a==12)
 else
    print("point = ", a)
 
-    b=sumdes()
+    b=lanceurcraps()
     while (b!=7) & (b!=a)
        b=sumdes()
         if(b==a)

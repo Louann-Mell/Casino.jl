@@ -39,14 +39,12 @@ export AbstractGame
 export AbstractGamer
 export passline
 export sumdes
+export lanceurcraps
 export dontpass
 export prop
 export dontcome
 export come
 
-
-
 include("craps.jl")
-
 
 end

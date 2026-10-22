@@ -8,7 +8,6 @@ passline(a,joueur1)
 
 dontpass(a,joueur1)
 
-
 #entrer le pari
 print("insérez votre pari: ")
 prop(sumdes(),joueur1) #taper sur entrer 2 fois
