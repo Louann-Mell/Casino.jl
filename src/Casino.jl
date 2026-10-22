@@ -39,6 +39,7 @@ include("roulette.jl")
 #Craps
 export AbstractGame
 export AbstractGamer
+export ResultatCraps
 export passline
 export sumdes
 export lanceurcraps
