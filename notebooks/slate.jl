@@ -5,6 +5,9 @@ try; import KaimonSlate; catch; error("This is a Kaimon Slate notebook — runni
 # Mon notebook
 """
 
+#%% code id=f3c9e0
+import Pkg; Pkg.activate(".")
+
 #%% code id=5dc8fa
 import Pkg; Pkg.activate(".")
 

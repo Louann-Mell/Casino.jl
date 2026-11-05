@@ -28,8 +28,7 @@ export calculer_gain, ajouter_gain
 include("roulette.jl")
 
 #Craps
-export AbstractGame
-export AbstractGamer
+export CrapsGamer
 export ResultatCraps
 export passline
 export sumdes
@@ -38,6 +37,7 @@ export dontpass
 export prop
 export dontcome
 export come
+export fig
 
 include("craps.jl")
 

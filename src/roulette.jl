@@ -67,7 +67,9 @@ end
 
 function verifier_pari(pari::Pari, joueur::RouletteGamer)
 
-    if pari.type_pari == NumeroBet && !(0 <= pari.numero <= 36)
+    if !isfinite(joueur.capital) || joueur.capital < 0
+        return false
+    elseif pari.type_pari == NumeroBet && !(0 <= pari.numero <= 36)
         return false
     elseif !isfinite(pari.mise) || pari.mise <= 0
         return false
@@ -147,4 +149,19 @@ function bet!(roulette::RouletteGame, joueur::RouletteGamer, pari::Pari)
 
     # Renvoyer le résultat
     return resultat
+end
+
+function Base.show(io::IO, r::RouletteResult)
+    print(io, "🎲 Numéro : ", r.numero,
+          "\nPari : ", r.pari,
+          "\nGain : ", r.gain, " €")
+end
+
+function Base.show(io::IO, rg::RouletteGamer)
+    print(io, "💰 Capital : ", rg.capital, " €" ,
+     "\nNombre de parties : ", length(rg.results))
+end
+
+function Base.show(io::IO, p::Pari)
+    print(io, "Pari sur le numéro ", p.numero, " de type ", p.type_pari, " avec une mise de ", p.mise, " €")
 end
