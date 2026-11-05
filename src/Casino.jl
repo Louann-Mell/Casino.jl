@@ -38,6 +38,7 @@ export dontpass
 export prop
 export dontcome
 export come
+export fig
 
 include("craps.jl")
 
