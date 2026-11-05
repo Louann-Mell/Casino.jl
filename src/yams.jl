@@ -109,7 +109,7 @@ function jouerYams(joueur::YamsGamer, mise::Real)
     return resultat
 end
 
-function simuleYams(joueur::YamsGamer, nb::Int, mise::Real)
+function Base.rand(joueur::YamsGamer, nb::Int, mise::Real)
 
     historique = Float64[joueur.solde]
 
