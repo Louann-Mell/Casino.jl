@@ -6,13 +6,16 @@ try; import KaimonSlate; catch; error("This is a Kaimon Slate notebook — runni
 """
 
 #%% code id=820887
-import Pkg; Pkg.activate(".")
+#import Pkg; Pkg.activate(".")
 
 #%% code id=187732
 using Casino
 
-#%% code id=7cbf06
-WGLMakie.activate!()
+#%% code id=45bbef
+using WGLMakie
+fig=Figure()
+btn1 = Makie.Button(fig[1,1], label="test", tellwidth=false)
+fig
 
 # ╔═╡ Slate.config · per-notebook settings (Settings panel)
 #   docid = 94ba17ce-80e2-4afd-8610-97f415bfc05f
