@@ -150,3 +150,18 @@ function bet!(roulette::RouletteGame, joueur::RouletteGamer, pari::Pari)
     # Renvoyer le résultat
     return resultat
 end
+
+function Base.show(io::IO, r::RouletteResult)
+    print(io, "🎲 Numéro : ", r.numero,
+          "\nPari : ", r.pari,
+          "\nGain : ", r.gain, " €")
+end
+
+function Base.show(io::IO, rg::RouletteGamer)
+    print(io, "💰 Capital : ", rg.capital, " €" ,
+     "\nNombre de parties : ", length(rg.results))
+end
+
+function Base.show(io::IO, p::Pari)
+    print(io, "Pari sur le numéro ", p.numero, " de type ", p.type_pari, " avec une mise de ", p.mise, " €")
+end
