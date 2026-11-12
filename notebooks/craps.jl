@@ -14,8 +14,8 @@ using Casino
 #%% code id=45bbef
 using WGLMakie
 fig=Figure()
-btn1 = Makie.Button(fig[1,1], label="test", tellwidth=false)
-fig
+btn1 = Makie.Button(fig[1,1], label="pass line", tellwidth=false)
+
 
 # ╔═╡ Slate.config · per-notebook settings (Settings panel)
 #   docid = 94ba17ce-80e2-4afd-8610-97f415bfc05f
